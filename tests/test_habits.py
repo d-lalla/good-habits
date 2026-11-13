@@ -492,6 +492,17 @@ class SkillFile(unittest.TestCase):
         self.assertEqual(listed, files)
 
 
+class Marketplace(unittest.TestCase):
+    """.claude-plugin/marketplace.json must point at the skill folder (Claude Code plugins, npx skills)."""
+
+    def test_points_at_the_skill(self):
+        data = json.loads((ROOT / ".claude-plugin" / "marketplace.json").read_text(encoding="utf-8"))
+        [plugin] = data["plugins"]
+        self.assertEqual(plugin["skills"], ["./good-habits"])
+        self.assertEqual(plugin["name"], front_matter(SKILL / "SKILL.md")[0]["name"])
+        self.assertTrue((ROOT / plugin["skills"][0] / "SKILL.md").is_file())
+
+
 class StateFormatDoc(unittest.TestCase):
     """The examples in state-format.md must be accepted by the script."""
 

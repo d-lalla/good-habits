@@ -1,0 +1,17 @@
+{
+  "name": "good-habits",
+  "description": "Good Habits: an Agent Skill that helps people build habits that last, without streak anxiety",
+  "owner": {
+    "name": "d-lalla"
+  },
+  "plugins": [
+    {
+      "name": "good-habits",
+      "source": "./",
+      "description": "Choose habits from a catalog or ready-made paths, log what you did, and get check-ins and weekly summaries that describe progress without judgement",
+      "license": "MIT",
+      "keywords": ["habits", "wellbeing", "routine", "tracking", "agent-skill"],
+      "skills": ["./good-habits"]
+    }
+  ]
+}
