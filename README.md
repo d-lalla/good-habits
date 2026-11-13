@@ -102,16 +102,12 @@ cp -r good-habits/good-habits ~/.claude/skills/good-habits
 For Codex the manual target is `~/.agents/skills/good-habits`
 ([docs](https://learn.chatgpt.com/docs/build-skills)).
 
-**Claude apps (claude.ai, desktop)** — turn on *Settings › Capabilities › Code execution and file
-creation*, then *Customize › Skills › + › Upload a skill* and upload a ZIP with the `good-habits` folder at
-its root ([help center](https://support.claude.com/en/articles/12512180-use-skills-in-claude)):
-
-```bash
-cd good-habits && zip -r good-habits.zip good-habits
-```
-
-On Windows: `Compress-Archive -Path good-habits -DestinationPath good-habits.zip`. No command can install
-a skill into a claude.ai account: the upload is the only way, and it stays private to you.
+**Claude apps (claude.ai, desktop)** — download
+[**good-habits.zip**](https://github.com/d-lalla/good-habits/releases/latest/download/good-habits.zip)
+from the latest release, turn on *Settings › Capabilities › Code execution and file creation*, then
+*Customize › Skills › + › Upload a skill* and upload the ZIP
+([help center](https://support.claude.com/en/articles/12512180-use-skills-in-claude)). No command can
+install a skill into a claude.ai account: the upload is the only way, and it stays private to you.
 
 **ChatGPT** — according to OpenAI's docs, standalone skills are available in the desktop app (*Skills*
 sidebar) and, packaged as plugins, on web and mobile. See [Known limitations](#known-limitations).
@@ -174,6 +170,8 @@ good-habits/                 the skill: this is the folder you install
   scripts/habits.py          log, today, progress, ics (Python 3, standard library only)
 .claude-plugin/
   marketplace.json           makes the repo installable as a Claude Code plugin and via `npx skills`
+.github/workflows/
+  release.yml                on a v* tag: run the tests, attach good-habits.zip to a GitHub release
 tests/test_habits.py         tests for the script, the catalog, the paths, SKILL.md and the manifest
 ```
 

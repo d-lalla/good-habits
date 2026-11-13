@@ -1,0 +1,31 @@
+name: release
+
+# Push a tag like v1.0.0: tests run, then good-habits.zip (the skill folder at its root, ready for
+# claude.ai's "Upload a skill") is attached to a GitHub release for that tag.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Test
+        run: python3 -m unittest discover -s tests
+
+      - name: Build ZIP
+        run: git archive --format=zip -o good-habits.zip "$GITHUB_REF_NAME" good-habits
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" good-habits.zip \
+            --title "Good Habits $GITHUB_REF_NAME" \
+            --notes "**good-habits.zip** is the skill folder, ready to upload in claude.ai under *Customize › Skills › Upload a skill*. For Claude Code, Codex and other agents, see the [install instructions](https://github.com/$GITHUB_REPOSITORY#install)." \
+            --generate-notes
