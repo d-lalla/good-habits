@@ -189,6 +189,46 @@ Moduli come cartelle dello stesso progetto (`Catalog`, `Habits`, `Progress`, `Sc
 non come assembly o servizi separati. Il motore dei progressi è fatto di funzioni pure (log in ingresso, stato in
 uscita): è la parte più semplice da testare e quella che più conviene testare.
 
+### 3.5 Reminder contestuale, non semplice promemoria
+
+Ciò che distingue una skill da una sveglia è che la notifica conosce lo stato dell'abitudine:
+
+| Reminder tradizionale | Good Habit Skill |
+|---|---|
+| "21:00 — Leggi 10 pagine." | "È il momento della lettura. Questa settimana 4 sessioni su 7." |
+| ricorda cosa fare | pianifica, accompagna, misura |
+
+Realizzazione deterministica, già nell'MVP: il testo è un modello localizzato (resx) con segnaposto riempiti dal
+motore dei progressi al momento dell'invio (`{fatto}`, `{target}`, `{mancante}`, `{giorniRiusciti}`). Ogni skill
+ha 2–3 varianti per situazione — inizio periodo, a metà, quasi raggiunto — scelte da regole fisse. Mai varianti
+che fanno leva sulla colpa ("non hai ancora…"). Con "notifiche discrete" attive (cap. 9.5) il testo resta generico.
+
+### 3.6 Percorsi: più skill attivate insieme
+
+Un **percorso** è un modello che attiva più skill già configurate e coordinate, così l'utente non parte da zero.
+
+Esempio — percorso "Dormire meglio" (orari di esempio, modificabili):
+
+| Orario | Skill |
+|---|---|
+| 21:00 | Disconnettersi dagli schermi |
+| 21:15 | Lettura di 10 pagine |
+| 21:40 | Meditazione di 10 minuti |
+| 22:00 | Prepararsi a dormire |
+
+Come si realizza senza nuova architettura:
+
+- un percorso è un file `catalog/paths/<chiave>.json`: elenco di `skill_key`, parametri che sostituiscono i
+  default, e scostamento in minuti rispetto a un orario-àncora scelto dall'utente (qui: l'ora di andare a letto);
+- attivarlo crea normali righe `user_habit` + `reminder`, marcate con `path_key` (una colonna in più, annullabile);
+- da quel momento ogni abitudine è **indipendente**: si modifica, si mette in pausa o si elimina da sola;
+- spostare l'àncora ricalcola gli orari di tutti i reminder del percorso; la dashboard li mostra raggruppati;
+- nessun motore di sequenze: i passi non si bloccano a vicenda e saltarne uno non invalida gli altri. Le
+  notifiche ravvicinate dello stesso percorso passano dal normale raggruppamento (cap. 6).
+
+I percorsi richiedono un catalogo più ampio dell'MVP (servono ad esempio "niente schermi" e "routine serale"),
+quindi entrano in fase 4. Il modello è già compatibile: basta la colonna `path_key`.
+
 ---
 
 ## 4. Catalogo iniziale delle skill
@@ -249,6 +289,7 @@ erDiagram
         bigint user_id FK
         string skill_key
         int skill_version
+        string path_key "null se non nasce da un percorso"
         string title "solo per custom"
         string goal_type "quantity, time, count, check"
         string period "day, week"
@@ -517,6 +558,7 @@ tema chiaro e scuro, lingua italiana all'inizio con testi già in resx.
 - Attiva, modifica, pausa, archivia, elimina.
 - Registrazione rapida e dashboard giornaliera/settimanale.
 - Reminder `fixed`, `interval`, `before`; Web Push con azioni Fatto / Più tardi / Salta.
+- Testo delle notifiche contestuale al progresso (cap. 3.5).
 - Fasce silenziose, tetto giornaliero, raggruppamento.
 - Continuità a 7 giorni e percentuale di completamento.
 - Esportazione dei propri dati (JSON) e cancellazione dell'account.
@@ -608,7 +650,7 @@ Ogni fase è rilasciabile da sola.
 | 2 | Scheduler, Web Push, snooze / skip / sposta, fasce silenziose, tetto, raggruppamento | alta | **alta** | 1 |
 | — | **MVP = fasi 0–2 + esportazione e cancellazione** | | | |
 | 3 | Continuità a 28 giorni, traguardi, trend, riepilogo giornaliero e settimanale | media | media | 2 |
-| 4 | Reminder adattivi, progressione graduale, estensione catalogo (≈ 20 skill) | media | media | 3 + dati reali |
+| 4 | Reminder adattivi, progressione graduale, estensione catalogo (≈ 20 skill), percorsi (cap. 3.6) | media | media | 3 + dati reali |
 | 5 | Modulo AI facoltativo | bassa | media | 3 |
 | 6a | Calendario: feed ICS in sola lettura | bassa | bassa | 2 |
 | 6b | Google Calendar (OAuth, scrittura eventi) | bassa | media | 6a |
