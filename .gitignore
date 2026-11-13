@@ -1,0 +1,5 @@
+# User data never belongs in the repository (D15)
+habits.json
+log.jsonl
+*.ics
+__pycache__/
