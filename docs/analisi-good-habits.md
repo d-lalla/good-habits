@@ -66,7 +66,7 @@ Vuoto al momento dell'analisi (solo questo documento). Tutte le voci richieste r
 
 ### 2.2 Riferimento riutilizzabile: OpenSana
 
-Unico progetto personale affine esaminato (`C:\dev\private\opensana`, sola lettura). Non è l'applicazione ospite,
+Unico progetto personale affine esaminato (sola lettura). Non è l'applicazione ospite,
 ma fornisce stack e schemi già funzionanti:
 
 | Aspetto | OpenSana | Riuso per Good Habits |
