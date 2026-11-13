@@ -1,6 +1,10 @@
 # Good Habits — Analisi architetturale e funzionale
 
-Versione 0.1 · 13.11.2026 · stato: bozza da approvare · nessun codice scritto
+Versione 0.1 · 13.11.2026 · nessun codice scritto
+
+> **Superato in parte.** Dopo la revisione delle decisioni, Good Habits è una skill per assistenti AI e non
+> un'applicazione. Architettura, modello dati, scheduler, API, MVP e roadmap di questo documento non valgono più:
+> vedi [decisioni.md](decisioni.md). Restano validi i concetti (capitoli 3.1–3.3, 3.5, 3.6, 7.4, limiti del cap. 8).
 
 Indice: [1 Executive summary](#1-executive-summary-e-fattibilità) ·
 [2 Esistente](#2-analisi-dellarchitettura-esistente) ·

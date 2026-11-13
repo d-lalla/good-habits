@@ -1,10 +1,9 @@
 # Good Habits
 
-Sistema modulare per costruire abitudini positive: catalogo di skill configurabili, reminder, monitoraggio dei
-progressi, motivazione non punitiva, AI opzionale.
+Skill per assistenti AI (formato `SKILL.md`) che aiuta a costruire abitudini positive: catalogo di abitudini
+configurabili, percorsi pronti, check-in contestuali al progresso, continuità non punitiva.
 
-Stato: **fase di analisi**. Nessun codice ancora.
+Stato: **decisioni approvate, implementazione da iniziare**. Nessun codice ancora.
 
-- [Analisi architetturale e funzionale](docs/analisi-good-habits.md)
-
-Le decisioni da approvare prima dello sviluppo sono elencate nel capitolo 12 del documento.
+- [Decisioni approvate e brief di implementazione](docs/decisioni.md) — documento di riferimento
+- [Analisi originale](docs/analisi-good-habits.md) — pensata per un'applicazione, superata in parte
