@@ -271,6 +271,15 @@ python -m unittest discover -s tests
 Design notes (in Italian): [approved decisions](docs/decisioni.md) ·
 [original analysis](docs/analisi-good-habits.md).
 
+## Star history
+
+<a href="https://star-history.com/#d-lalla/good-habits&Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=d-lalla/good-habits&type=Date&theme=dark">
+    <img alt="Star history chart for d-lalla/good-habits" src="https://api.star-history.com/svg?repos=d-lalla/good-habits&type=Date">
+  </picture>
+</a>
+
 ## License
 
 [MIT](LICENSE)
