@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Good Habits</title>
+<meta name="description" content="An Agent Skill that helps people build habits that last, without streak anxiety. Works with Claude Code, the Claude apps, Codex and any SKILL.md assistant.">
+<meta property="og:title" content="Good Habits">
+<meta property="og:description" content="Habits that last, without streak anxiety. An Agent Skill for Claude, Codex and any SKILL.md assistant.">
+<meta name="theme-color" content="#F6F3EC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1C221E" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 58V30' stroke='%234F6B52' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M32 36C12 34 4 18 6 4c16 0 28 12 26 32z' fill='%236F8F72'/%3E%3Cpath d='M32 30c16 0 28-12 28-28-16-2-28 10-28 28z' fill='%239DB59C'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F3EC; --surface:#FBF9F4; --line:#E2DCCD; --soft:#EFEADF;
+    --ink:#2B332D; --ink-2:#5B6B5E; --head:#2F4134;
+    --sage:#6F8F72; --sage-2:#9DB59C; --sage-3:#DCE6D6; --moss:#4F6B52;
+    --clay:#C98B6B; --sand:#E3C9AE; --sky:#9DB8C4;
+    --code:#ECE7DB;
+    --radius:20px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#1C221E; --surface:#232B25; --line:#34413A; --soft:#2C352F;
+      --ink:#E1E8E0; --ink-2:#A9B8A9; --head:#E7EDE6;
+      --sage:#9DB59C; --sage-2:#6F8F72; --sage-3:#34463A; --moss:#B9CBB8;
+      --clay:#D6A88C; --sand:#8A6A52; --sky:#7E9AA8;
+      --code:#2A332D;
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 "Nunito Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:var(--moss);text-underline-offset:3px}
+  h1,h2,h3{font-family:Fraunces,Georgia,serif;color:var(--head);font-weight:600;line-height:1.2;margin:0}
+  h2{font-size:clamp(28px,4vw,38px);margin-bottom:12px}
+  h3{font-size:21px;margin-bottom:6px}
+  p{margin:0 0 12px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  section{padding:72px 0}
+  .lead{color:var(--ink-2);font-size:19px;max-width:640px}
+  .eyebrow{display:inline-block;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--sage);margin-bottom:10px}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;gap:20px;height:60px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:Fraunces,serif;font-weight:600;font-size:20px;color:var(--head);text-decoration:none}
+  .brand svg{width:26px;height:26px}
+  nav .links{margin-left:auto;display:flex;gap:22px}
+  nav .links a{color:var(--ink-2);text-decoration:none;font-weight:600;font-size:15px}
+  nav .links a:hover{color:var(--head)}
+  @media (max-width:720px){nav .links a:not(.gh){display:none}}
+
+  /* hero */
+  .hero{position:relative;padding:88px 0 150px;overflow:hidden}
+  .hero h1{font-size:clamp(40px,7vw,72px);letter-spacing:-.01em;max-width:760px}
+  .hero .lead{margin:20px 0 32px;font-size:clamp(18px,2.2vw,21px)}
+  .hills{position:absolute;inset:auto 0 0 0;width:100%;height:170px;pointer-events:none}
+  .sun{position:absolute;right:8%;top:70px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,var(--sand) 0 45%,transparent 72%);opacity:.8}
+  @media (max-width:720px){.sun{width:140px;height:140px;right:-30px;top:40px}}
+  .hero .wrap{position:relative}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;font-weight:700;text-decoration:none;border:1px solid var(--line);color:var(--head);background:var(--surface)}
+  .btn.primary{background:var(--moss);color:var(--bg);border-color:var(--moss)}
+  .btn:hover{filter:brightness(1.05)}
+  .cmd{display:flex;align-items:center;gap:10px;margin-top:22px;max-width:100%;width:fit-content;background:var(--code);border:1px solid var(--line);border-radius:14px;padding:10px 10px 10px 16px;font:500 15px/1.4 ui-monospace,"Cascadia Code",Menlo,monospace;color:var(--ink)}
+  .cmd code{overflow-x:auto;white-space:nowrap}
+  .cmd .p{color:var(--sage);user-select:none}
+  .copy{flex:none;border:0;border-radius:10px;padding:7px 12px;background:var(--surface);color:var(--moss);font:700 13px "Nunito Sans",sans-serif;cursor:pointer}
+  .copy:focus-visible,.btn:focus-visible,a:focus-visible{outline:3px solid var(--sage-2);outline-offset:2px}
+
+  /* cards */
+  .grid{display:grid;gap:16px}
+  .g4{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .card p{color:var(--ink-2);margin:0}
+  .ico{width:48px;height:48px;border-radius:50%;background:var(--sage-3);display:grid;place-items:center;margin-bottom:14px}
+  .ico svg{width:24px;height:24px;stroke:var(--moss);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .section-head{margin-bottom:32px}
+
+  /* chat */
+  .chat{display:flex;flex-direction:column;gap:12px;max-width:640px}
+  .msg{padding:14px 18px;border-radius:18px;max-width:88%}
+  .msg.you{align-self:flex-end;background:var(--sage-3);border-bottom-right-radius:6px}
+  .msg.ai{align-self:flex-start;background:var(--surface);border:1px solid var(--line);border-bottom-left-radius:6px}
+  .msg b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--sage);margin-bottom:2px}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  @media (max-width:880px){.split{grid-template-columns:1fr}}
+  .figure{width:100%;height:auto;display:block;border-radius:var(--radius)}
+
+  /* catalog */
+  .cat h3{display:flex;align-items:center;gap:10px}
+  .swatch{width:12px;height:12px;border-radius:50%;flex:none}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .tag{font-size:14px;padding:3px 10px;border-radius:999px;background:var(--soft);color:var(--ink-2)}
+  .path ol{margin:10px 0 0;padding-left:20px;color:var(--ink-2)}
+  .path .anchor{font-size:14px;color:var(--sage);font-weight:700}
+
+  /* levels */
+  .level{position:relative;padding-top:56px}
+  .level::before{content:attr(data-n);position:absolute;top:22px;left:24px;font:600 15px Fraunces,serif;color:var(--moss);background:var(--sage-3);border-radius:999px;padding:2px 12px}
+
+  /* install */
+  .install .card h3{font-size:19px}
+  .install pre{margin:12px 0 0;padding:12px 14px;background:var(--code);border-radius:12px;white-space:pre-wrap;overflow-wrap:anywhere;font:500 14px/1.5 ui-monospace,"Cascadia Code",Menlo,monospace;color:var(--ink)}
+
+  .note{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--sage);border-radius:14px;padding:18px 20px;color:var(--ink-2)}
+  footer{border-top:1px solid var(--line);padding:32px 0 48px;color:var(--ink-2);font-size:15px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between}
+  .alt{background:var(--soft)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Good Habits, home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 58V30" stroke="var(--moss)" stroke-width="5" stroke-linecap="round"/><path d="M32 36C12 34 4 18 6 4c16 0 28 12 26 32z" fill="var(--sage)"/><path d="M32 30c16 0 28-12 28-28-16-2-28 10-28 28z" fill="var(--sage-2)"/></svg>
+      Good Habits
+    </a>
+    <div class="links">
+      <a href="#why">Why</a>
+      <a href="#week">A week</a>
+      <a href="#catalog">Catalog</a>
+      <a href="#install">Install</a>
+      <a class="gh" href="https://github.com/d-lalla/good-habits">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="sun" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="eyebrow">Agent Skill · open source · MIT</span>
+    <h1>Habits that last, without streak anxiety.</h1>
+    <p class="lead">Good Habits turns your AI assistant into a calm habit coach. Pick a few habits, start small, say what you did in plain words, and see how it's going: "this week 4 of 7". No points, no badges, no guilt.</p>
+    <div class="cta">
+      <a class="btn primary" href="#install">Install</a>
+      <a class="btn" href="https://github.com/d-lalla/good-habits">View on GitHub</a>
+    </div>
+    <div class="cmd"><span class="p">$</span><code id="cmd-hero">npx skills add d-lalla/good-habits -g</code><button class="copy" data-copy="cmd-hero">Copy</button></div>
+  </div>
+  <svg class="hills" viewBox="0 0 1200 170" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 70 C 180 20, 360 50, 540 35 S 900 -10, 1200 40 V170 H0 Z" fill="var(--sage-3)"/>
+    <path d="M0 110 C 220 75, 420 115, 640 90 S 1000 75, 1200 100 V170 H0 Z" fill="var(--sage-2)" opacity=".75"/>
+    <path d="M0 145 C 260 122, 520 152, 780 132 S 1080 127, 1200 139 V170 H0 Z" fill="var(--sage)"/>
+  </svg>
+</header>
+
+<section id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Why</span>
+      <h2>Kind to you, exact about numbers</h2>
+      <p class="lead">Most trackers punish a missed day, and guilt is what makes people quit. Good Habits is built the other way round.</p>
+    </div>
+    <div class="grid g4">
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M5 8h14M5 12h10M5 16h6"/></svg></div>
+        <h3>Describes, never judges</h3>
+        <p>"4 sessions so far", never "you failed". No streak to defend.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M15 4a8 8 0 1 0 5 13 6.5 6.5 0 1 1-5-13z"/></svg></div>
+        <h3>Rest is not failure</h3>
+        <p>Planned skips and pauses are left out of every count.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 19h4v-4h4v-4h4V7h4"/></svg></div>
+        <h3>Small steps</h3>
+        <p>Every default is an example. Changes are proposals you can decline.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+        <h3>Your data stays yours</h3>
+        <p>Two plain files in a folder you choose. Numbers come from a script, not guesses.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="week" class="alt">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow">Just talk</span>
+      <h2>No commands to learn</h2>
+      <p class="lead" style="margin-bottom:24px">Say what you did. The assistant logs it and tells you where you are, in your language.</p>
+      <div class="chat">
+        <div class="msg you"><b>You</b>Two glasses and a 500 ml bottle today. I'm skipping Sunday, I'll be travelling.</div>
+        <div class="msg ai"><b>Assistant</b>Logged: 1000 of 1500 ml so far today. Sunday is marked as a rest day for water.</div>
+        <div class="msg you"><b>You</b>Going to bed now.</div>
+        <div class="msg ai"><b>Assistant</b>In bed at 22:50. Last 7 days: 5 of 6 evenings by 23:00.</div>
+      </div>
+    </div>
+    <div>
+      <span class="eyebrow">A week</span>
+      <h2>Progress you can read at a glance</h2>
+      <p class="lead">On Sunday, if you like, a short summary: what went well, what changed, at most one suggestion. Missed days stay open, rest days don't count.</p>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:40px">
+    <img class="figure" src="assets/week.svg" alt="Example week: water 5 of 6 with one rest day, reading 4 of 5, workout 3 of 3, in bed by 23:00 on 5 of 7 days." width="1200" height="460">
+  </div>
+</section>
+
+<section id="catalog">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Catalog</span>
+      <h2>21 habits in 7 areas, plus your own</h2>
+      <p class="lead">Each habit comes with why it helps, how to start small and how to log it. Amounts, times, counts or a simple check-off.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card cat"><h3><span class="swatch" style="background:#6F8F72"></span>Sleep</h3><div class="tags"><span class="tag">bedtime</span><span class="tag">regular schedule</span><span class="tag">evening routine</span><span class="tag">no screens before bed</span></div></div>
+      <div class="card cat"><h3><span class="swatch" style="background:#8FAE8B"></span>Activity</h3><div class="tags"><span class="tag">workout</span><span class="tag">daily steps</span><span class="tag">stretching</span><span class="tag">active breaks</span></div></div>
+      <div class="card cat"><h3><span class="swatch" style="background:#9DB8C4"></span>Nutrition</h3><div class="tags"><span class="tag">hydration</span><span class="tag">fruit &amp; vegetables</span><span class="tag">fewer sugary drinks</span></div></div>
+      <div class="card cat"><h3><span class="swatch" style="background:#7E9AA8"></span>Mind</h3><div class="tags"><span class="tag">meditation</span><span class="tag">breathing</span><span class="tag">gratitude journal</span></div></div>
+      <div class="card cat"><h3><span class="swatch" style="background:#B59F7B"></span>Learning</h3><div class="tags"><span class="tag">daily reading</span><span class="tag">language study</span><span class="tag">15 minutes of learning</span></div></div>
+      <div class="card cat"><h3><span class="swatch" style="background:#C98B6B"></span>Productivity &amp; relationships</h3><div class="tags"><span class="tag">plan the day</span><span class="tag">focus time</span><span class="tag">weekly review</span><span class="tag">reach out</span></div></div>
+    </div>
+
+    <div class="section-head" style="margin:56px 0 24px">
+      <h2 style="font-size:28px">Ready-made paths</h2>
+      <p class="lead">Several habits around one anchor time. Start with two steps, add the rest later.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card path"><span class="anchor">Anchor: bedtime</span><h3>Sleep better</h3><ol><li>Screens away</li><li>Read</li><li>Meditate</li><li>In bed</li></ol></div>
+      <div class="card path"><span class="anchor">Anchor: wake-up time</span><h3>Morning start</h3><ol><li>Glass of water</li><li>Stretching</li><li>Plan the day</li></ol></div>
+      <div class="card path"><span class="anchor">Anchor: start of work</span><h3>Focused workday</h3><ol><li>Plan the day</li><li>Focus time</li><li>Active breaks</li><li>Weekly review</li></ol></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Works where you are</span>
+      <h2>Grows with your assistant</h2>
+      <p class="lead">The skill checks what your assistant can do and tells you in one line. Nothing is lost when moving up.</p>
+    </div>
+    <div class="grid g3 levels">
+      <div class="card level" data-n="Level 0"><h3>Chat only</h3><p>Help choosing and configuring, check-ins in conversation. No exact counts.</p></div>
+      <div class="card level" data-n="Level 1"><h3>Files and Python</h3><p>Exact records and numbers in your folder, plus a calendar file for timed habits.</p></div>
+      <div class="card level" data-n="Level 2"><h3>Scheduled tasks</h3><p>One gentle daily check-in and one weekly summary, automatically.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="install" class="install">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Install</span>
+      <h2>A minute to set up</h2>
+      <p class="lead">Installs for you only, in all your projects. Then just say "I want to sleep better. Where do I start?"</p>
+    </div>
+    <div class="grid g4">
+      <div class="card"><h3>Claude Code</h3><p>As a plugin, inside a session:</p><pre>/plugin install good-habits --marketplace d-lalla/good-habits</pre></div>
+      <div class="card"><h3>70+ agents</h3><p>Claude Code, Codex, Cursor, opencode and more:</p><pre>npx skills add d-lalla/good-habits -g</pre></div>
+      <div class="card"><h3>Claude apps</h3><p>Download <a href="https://github.com/d-lalla/good-habits/releases/latest/download/good-habits.zip">good-habits.zip</a>, then <em>Customize › Skills › Upload a skill</em>.</p></div>
+      <div class="card"><h3>Manual</h3><p>Copy the <a href="https://github.com/d-lalla/good-habits/tree/main/good-habits"><code>good-habits/</code></a> folder into your assistant's skills folder.</p></div>
+    </div>
+    <p style="margin-top:28px" class="note">
+      <span>Not medical advice. No weight, calories, diagnoses or medication are ever asked for. Journal habits record only <em>that</em> you wrote, never <em>what</em>.</span>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Good Habits · MIT license</span>
+    <span><a href="https://github.com/d-lalla/good-habits">GitHub</a> · <a href="https://skills.sh/d-lalla/good-habits">skills.sh</a> · <a href="https://agentskills.io/specification">Agent Skills format</a></span>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.copy').forEach(b => b.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(document.getElementById(b.dataset.copy).textContent); b.textContent = 'Copied'; }
+    catch { b.textContent = 'Select & copy'; }
+    setTimeout(() => b.textContent = 'Copy', 1600);
+  }));
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420" role="img" aria-labelledby="t d">
+  <title id="t">Principles</title>
+  <desc id="d">Describes, never judges. Rest is not failure. Small steps. Your data stays yours.</desc>
+  <style>
+    .card{fill:#FBF9F4;stroke:#E2DCCD}.dot{fill:#DCE6D6}.ic{stroke:#4F6B52;fill:none}.icf{fill:#4F6B52}
+    .h{fill:#2F4134}.p{fill:#5B6B5E}
+    text{font-family:ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,sans-serif}
+    @media (prefers-color-scheme:dark){
+      .card{fill:#232B25;stroke:#34413A}.dot{fill:#34463A}.ic{stroke:#B9CBB8}.icf{fill:#B9CBB8}
+      .h{fill:#E7EDE6}.p{fill:#A9B8A9}
+    }
+  </style>
+  <g stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 1 -->
+    <rect class="card" x="8" y="8" width="584" height="194" rx="22" stroke-width="2"/>
+    <circle class="dot" cx="76" cy="76" r="36"/>
+    <path class="ic" d="M60 66 h32 M60 78 h24 M60 90 h16"/>
+    <text class="h" x="132" y="70" font-size="28" font-weight="600" stroke="none">Describes, never judges</text>
+    <text class="p" x="132" y="112" font-size="21" stroke="none">"4 sessions so far", never "you failed".</text>
+    <text class="p" x="132" y="142" font-size="21" stroke="none">No points, no badges, no streaks at risk.</text>
+    <!-- 2 -->
+    <rect class="card" x="608" y="8" width="584" height="194" rx="22" stroke-width="2"/>
+    <circle class="dot" cx="676" cy="76" r="36"/>
+    <path class="ic" d="M688 62 a18 18 0 1 0 0 28 a14 14 0 1 1 0 -28 Z"/>
+    <text class="h" x="732" y="70" font-size="28" font-weight="600" stroke="none">Rest is not failure</text>
+    <text class="p" x="732" y="112" font-size="21" stroke="none">Planned skips and pauses are left out</text>
+    <text class="p" x="732" y="142" font-size="21" stroke="none">of every count.</text>
+    <!-- 3 -->
+    <rect class="card" x="8" y="218" width="584" height="194" rx="22" stroke-width="2"/>
+    <circle class="dot" cx="76" cy="286" r="36"/>
+    <path class="ic" d="M58 302 h10 v-10 h10 v-10 h10 v-10 h8"/>
+    <text class="h" x="132" y="280" font-size="28" font-weight="600" stroke="none">Small steps</text>
+    <text class="p" x="132" y="322" font-size="21" stroke="none">Every default is an example to adjust.</text>
+    <text class="p" x="132" y="352" font-size="21" stroke="none">Changes are proposals you can decline.</text>
+    <!-- 4 -->
+    <rect class="card" x="608" y="218" width="584" height="194" rx="22" stroke-width="2"/>
+    <circle class="dot" cx="676" cy="286" r="36"/>
+    <path class="ic" d="M662 282 v-6 a14 14 0 0 1 28 0 v6"/>
+    <rect class="ic" x="656" y="282" width="40" height="26" rx="6"/>
+    <circle class="icf" cx="676" cy="295" r="3.5" stroke="none"/>
+    <text class="h" x="732" y="280" font-size="28" font-weight="600" stroke="none">Your data stays yours</text>
+    <text class="p" x="732" y="322" font-size="21" stroke="none">Two plain files in a folder you choose.</text>
+    <text class="p" x="732" y="352" font-size="21" stroke="none">Exact numbers from a script, not guesses.</text>
+  </g>
+</svg>

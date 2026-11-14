@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420" role="img" aria-labelledby="t d">
+  <title id="t">21 habits in 7 areas</title>
+  <desc id="d">Sleep 4, Activity 4, Nutrition 3, Mind 3, Learning 3, Productivity 3, Relationships 1, plus custom habits.</desc>
+  <style>
+    .bg{fill:#FBF9F4;stroke:#E2DCCD}.track{fill:#EFEADF}.h{fill:#2F4134}.p{fill:#5B6B5E}
+    .c1{fill:#6F8F72}.c2{fill:#8FAE8B}.c3{fill:#C98B6B}.c4{fill:#9DB8C4}.c5{fill:#B59F7B}.c6{fill:#7E9AA8}.c7{fill:#D6A88C}
+    text{font-family:ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,sans-serif}
+    @media (prefers-color-scheme:dark){
+      .bg{fill:#232B25;stroke:#34413A}.track{fill:#2C352F}.h{fill:#E7EDE6}.p{fill:#A9B8A9}
+    }
+  </style>
+  <rect class="bg" x="2" y="2" width="1196" height="416" rx="24" stroke-width="2"/>
+  <text class="h" x="48" y="64" font-size="28" font-weight="600">21 habits in 7 areas</text>
+  <text class="p" x="48" y="96" font-size="19">Plus fully custom habits and 3 ready-made paths.</text>
+  <!-- bar unit = 110px per habit -->
+  <g font-size="19">
+    <text class="h" x="48" y="146">Sleep</text>        <rect class="track" x="230" y="128" width="440" height="24" rx="12"/><rect class="c1" x="230" y="128" width="440" height="24" rx="12"/><text class="p" x="696" y="146">4 · bedtime, schedule, routine, no screens</text>
+    <text class="h" x="48" y="186">Activity</text>     <rect class="track" x="230" y="168" width="440" height="24" rx="12"/><rect class="c2" x="230" y="168" width="440" height="24" rx="12"/><text class="p" x="696" y="186">4 · workout, steps, stretching, breaks</text>
+    <text class="h" x="48" y="226">Nutrition</text>    <rect class="track" x="230" y="208" width="440" height="24" rx="12"/><rect class="c4" x="230" y="208" width="330" height="24" rx="12"/><text class="p" x="696" y="226">3 · water, fruit &amp; veg, fewer sugary drinks</text>
+    <text class="h" x="48" y="266">Mind</text>         <rect class="track" x="230" y="248" width="440" height="24" rx="12"/><rect class="c6" x="230" y="248" width="330" height="24" rx="12"/><text class="p" x="696" y="266">3 · meditation, breathing, gratitude</text>
+    <text class="h" x="48" y="306">Learning</text>     <rect class="track" x="230" y="288" width="440" height="24" rx="12"/><rect class="c5" x="230" y="288" width="330" height="24" rx="12"/><text class="p" x="696" y="306">3 · reading, language, 15 minutes</text>
+    <text class="h" x="48" y="346">Productivity</text> <rect class="track" x="230" y="328" width="440" height="24" rx="12"/><rect class="c3" x="230" y="328" width="330" height="24" rx="12"/><text class="p" x="696" y="346">3 · plan the day, focus, review</text>
+    <text class="h" x="48" y="386">Relationships</text><rect class="track" x="230" y="368" width="440" height="24" rx="12"/><rect class="c7" x="230" y="368" width="110" height="24" rx="12"/><text class="p" x="696" y="386">1 · reach out</text>
+  </g>
+</svg>

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 460" width="1200" height="460" role="img" aria-labelledby="t d">
+  <title id="t">A week with Good Habits</title>
+  <desc id="d">Example week. Water: 5 of 6, one rest day. Reading: 4 of 5. Workout: 3 of 3. In bed by 23:00: 5 of 7.</desc>
+  <style>
+    .bg{fill:#FBF9F4;stroke:#E2DCCD}.done{fill:#6F8F72}.open{fill:none;stroke:#B7C4B3}.rest{fill:#E3C9AE}.off{fill:#D9D3C5}
+    .h{fill:#2F4134}.p{fill:#5B6B5E}.n{fill:#4F6B52}.line{stroke:#ECE6D9}
+    text{font-family:ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,sans-serif}
+    @media (prefers-color-scheme:dark){
+      .bg{fill:#232B25;stroke:#34413A}.done{fill:#9DB59C}.open{stroke:#4D5E52}.rest{fill:#8A6A52}.off{fill:#3C463F}
+      .h{fill:#E7EDE6}.p{fill:#A9B8A9}.n{fill:#C9D6C2}.line{stroke:#2E3831}
+    }
+  </style>
+  <rect class="bg" x="2" y="2" width="1196" height="456" rx="24" stroke-width="2"/>
+  <text class="h" x="48" y="64" font-size="28" font-weight="600">This week</text>
+  <text class="p" x="48" y="96" font-size="19">Missed days stay open, rest days don't count. Nothing is lost.</text>
+
+  <g class="p" font-size="18" text-anchor="middle">
+    <text x="380" y="146">Mon</text><text x="460" y="146">Tue</text><text x="540" y="146">Wed</text><text x="620" y="146">Thu</text>
+    <text x="700" y="146">Fri</text><text x="780" y="146">Sat</text><text x="860" y="146">Sun</text>
+  </g>
+
+  <g class="line" stroke-width="2">
+    <path d="M48 168 H1152"/><path d="M48 230 H1152"/><path d="M48 292 H1152"/><path d="M48 354 H1152"/>
+  </g>
+
+  <!-- rows: centres at y 199, 261, 323, 385 -->
+  <g font-size="22">
+    <text class="h" x="48" y="207">Water · 1500 ml</text>
+    <text class="h" x="48" y="269">Reading · 10 pages</text>
+    <text class="h" x="48" y="331">Workout · 3 a week</text>
+    <text class="h" x="48" y="393">In bed by 23:00</text>
+  </g>
+
+  <g stroke-width="3">
+    <!-- water: done done done open done done rest -->
+    <circle class="done" cx="380" cy="199" r="16"/><circle class="done" cx="460" cy="199" r="16"/><circle class="done" cx="540" cy="199" r="16"/>
+    <circle class="open" cx="620" cy="199" r="15"/><circle class="done" cx="700" cy="199" r="16"/><circle class="done" cx="780" cy="199" r="16"/>
+    <path class="rest" d="M866 186 a14 14 0 1 0 0 26 a11 11 0 1 1 0 -26 Z"/>
+    <!-- reading Mon-Fri: done done open done done, weekend not planned -->
+    <circle class="done" cx="380" cy="261" r="16"/><circle class="done" cx="460" cy="261" r="16"/><circle class="open" cx="540" cy="261" r="15"/>
+    <circle class="done" cx="620" cy="261" r="16"/><circle class="done" cx="700" cy="261" r="16"/>
+    <circle class="off" cx="780" cy="261" r="4"/><circle class="off" cx="860" cy="261" r="4"/>
+    <!-- workout any 3 days -->
+    <circle class="done" cx="380" cy="323" r="16"/><circle class="off" cx="460" cy="323" r="4"/><circle class="done" cx="540" cy="323" r="16"/>
+    <circle class="off" cx="620" cy="323" r="4"/><circle class="off" cx="700" cy="323" r="4"/><circle class="done" cx="780" cy="323" r="16"/>
+    <circle class="off" cx="860" cy="323" r="4"/>
+    <!-- bedtime -->
+    <circle class="done" cx="380" cy="385" r="16"/><circle class="done" cx="460" cy="385" r="16"/><circle class="done" cx="540" cy="385" r="16"/>
+    <circle class="open" cx="620" cy="385" r="15"/><circle class="done" cx="700" cy="385" r="16"/><circle class="open" cx="780" cy="385" r="15"/>
+    <circle class="done" cx="860" cy="385" r="16"/>
+  </g>
+
+  <g class="n" font-size="22" font-weight="600">
+    <text x="940" y="207">5 of 6</text><text x="940" y="269">4 of 5</text><text x="940" y="331">3 of 3</text><text x="940" y="393">5 of 7</text>
+  </g>
+  <g class="p" font-size="17">
+    <text x="1020" y="207">1 rest day</text><text x="1020" y="269">weekdays</text><text x="1020" y="331">target met</text>
+  </g>
+
+  <g class="p" font-size="16" transform="translate(48 432)">
+    <circle class="done" cx="8" cy="-5" r="8"/><text x="24" y="0">done</text>
+    <circle class="open" cx="100" cy="-5" r="7.5" stroke-width="3"/><text x="116" y="0">open</text>
+    <path class="rest" transform="translate(186 -12.5) scale(.6)" d="M6 0 a14 14 0 1 0 0 26 a11 11 0 1 1 0 -26 Z"/><text x="206" y="0">rest</text>
+    <circle class="off" cx="268" cy="-5" r="4"/><text x="282" y="0">not planned</text>
+  </g>
+</svg>

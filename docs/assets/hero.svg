@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" width="1200" height="340" role="img" aria-labelledby="t d">
+  <title id="t">Good Habits</title>
+  <desc id="d">Habits that last, without streak anxiety. Soft hills under a low sun.</desc>
+  <style>
+    .bg{fill:#F6F3EC}.sun{fill:#E9C9A8}.h1{fill:#C9D6C2}.h2{fill:#9DB59C}.h3{fill:#6F8F72}
+    .title{fill:#2F4134}.sub{fill:#4F6B52}.leaf{fill:#6F8F72}.stem{stroke:#4F6B52}
+    text{font-family:ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,sans-serif}
+    @media (prefers-color-scheme:dark){
+      .bg{fill:#1C221E}.sun{fill:#8A6A52}.h1{fill:#2C3A30}.h2{fill:#3A4D3E}.h3{fill:#4F6B52}
+      .title{fill:#E7EDE6}.sub{fill:#B9CBB8}.leaf{fill:#9DB59C}.stem{stroke:#9DB59C}
+    }
+  </style>
+  <rect class="bg" width="1200" height="340" rx="24"/>
+  <circle class="sun" cx="930" cy="190" r="96"/>
+  <path class="h1" d="M0 250 C 180 200, 360 230, 540 215 S 900 170, 1200 220 L1200 316 Q1200 340 1176 340 L24 340 Q0 340 0 316 Z"/>
+  <path class="h2" d="M0 285 C 220 250, 420 290, 640 265 S 1000 250, 1200 275 L1200 316 Q1200 340 1176 340 L24 340 Q0 340 0 316 Z"/>
+  <path class="h3" d="M0 318 C 260 295, 520 325, 780 305 S 1080 300, 1200 312 L1200 316 Q1200 340 1176 340 L24 340 Q0 340 0 316 Z"/>
+  <g transform="translate(72 62)">
+    <path class="stem" d="M28 64 V30" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <path class="leaf" d="M28 36 C 8 34, 0 18, 2 4 C 18 4, 30 16, 28 36 Z"/>
+    <path class="leaf" d="M28 30 C 44 30, 56 18, 56 2 C 40 0, 28 12, 28 30 Z"/>
+  </g>
+  <text class="title" x="150" y="112" font-size="60" font-weight="600">Good Habits</text>
+  <text class="sub" x="152" y="158" font-size="26">Habits that last, without streak anxiety.</text>
+  <text class="sub" x="152" y="194" font-size="20" opacity=".85">An Agent Skill for Claude, Codex and any SKILL.md assistant</text>
+</svg>

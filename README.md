@@ -1,11 +1,14 @@
-# Good Habits
+<p align="center">
+  <a href="https://d-lalla.github.io/good-habits/"><img src="docs/assets/hero.svg" alt="Good Habits: habits that last, without streak anxiety. An Agent Skill for Claude, Codex and any SKILL.md assistant." width="100%"></a>
+</p>
 
-**An Agent Skill that helps people build habits that last — without streak anxiety.**
-
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Agent Skills](https://img.shields.io/badge/format-Agent%20Skills-8A2BE2.svg)](https://agentskills.io/specification)
-[![Python](https://img.shields.io/badge/python-3%20·%20stdlib%20only-3776AB.svg)](good-habits/scripts/habits.py)
-[![Dependencies](https://img.shields.io/badge/dependencies-none-brightgreen.svg)](#how-it-works)
+<p align="center">
+  <a href="https://d-lalla.github.io/good-habits/"><img src="https://img.shields.io/badge/website-good--habits-4F6B52.svg" alt="Website"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-6F8F72.svg" alt="License: MIT"></a>
+  <a href="https://agentskills.io/specification"><img src="https://img.shields.io/badge/format-Agent%20Skills-9DB59C.svg" alt="Agent Skills"></a>
+  <a href="good-habits/scripts/habits.py"><img src="https://img.shields.io/badge/python-3%20·%20stdlib%20only-9DB8C4.svg" alt="Python 3, standard library only"></a>
+  <a href="#how-it-works"><img src="https://img.shields.io/badge/dependencies-none-C98B6B.svg" alt="No dependencies"></a>
+</p>
 
 Good Habits turns your AI assistant into a calm habit coach. It helps you pick a few habits from a curated
 catalog, start small, log what you did in plain words, and see how it's going — "this week 4 of 7" — with
@@ -21,13 +24,9 @@ Claude Code, the Claude apps, Codex and others.
 Most habit trackers punish you for missing a day. Anxiety and guilt are exactly what make people quit.
 Good Habits is built on the opposite idea:
 
-- **Describes, never judges.** "4 sessions so far", never "you failed".
-- **Rest is not failure.** Planned skips and pauses are left out of every count.
-- **Small steps.** Every default is an example to adjust. Raising or lowering a target is only ever a
-  proposal you accept or decline.
-- **Exact numbers.** Progress is computed by a small script, not guessed by the model.
-- **Your data stays yours.** Two plain files in a folder you choose. Journal habits record only *that* you
-  wrote, never *what*.
+<img src="docs/assets/principles.svg" alt="Describes, never judges: 4 sessions so far, never you failed. Rest is not failure: planned skips and pauses are left out of every count. Small steps: every default is an example, changes are proposals you can decline. Your data stays yours: two plain files in a folder you choose, exact numbers from a script." width="100%">
+
+Journal habits record only *that* you wrote, never *what*.
 
 ## Example
 
@@ -38,6 +37,10 @@ Good Habits is built on the opposite idea:
 > **You:** Going to bed now.
 >
 > **Assistant:** In bed at 22:50. Last 7 days: 5 of 6 evenings by 23:00.
+
+What a week looks like (example data):
+
+<img src="docs/assets/week.svg" alt="Example week. Water 1500 ml: 5 of 6, one rest day. Reading 10 pages on weekdays: 4 of 5. Workout 3 a week: 3 of 3. In bed by 23:00: 5 of 7." width="100%">
 
 And on Sunday, if you like, a short weekly summary: what went well, what changed, and at most one
 suggestion.
@@ -142,6 +145,8 @@ Nothing is lost when moving up: the assistant offers to write down what it alrea
 
 ## Catalog
 
+<img src="docs/assets/catalog.svg" alt="21 habits in 7 areas: sleep 4, activity 4, nutrition 3, mind 3, learning 3, productivity 3, relationships 1." width="100%">
+
 | Category | Habits |
 |---|---|
 | Sleep | `bedtime`, `regular-sleep-schedule`, `evening-routine`, `no-screens-before-bed` |
@@ -159,6 +164,20 @@ Nothing is lost when moving up: the assistant offers to write down what it alrea
 | `focused-workday` | start of work | plan the day → focus time → active breaks → weekly review |
 
 ## How it works
+
+```mermaid
+flowchart LR
+    you(["You: 'drank 500 ml'"]) --> ai["Assistant<br/>+ SKILL.md"]
+    ai -->|log| py["habits.py"]
+    py -->|append| log[("log.jsonl")]
+    cfg[("habits.json")] --> py
+    py -->|exact JSON| ai
+    ai --> reply(["'1000 of 1500 ml today'"])
+    classDef soft fill:#DCE6D6,stroke:#6F8F72,color:#2F4134
+    classDef warm fill:#F3E6D8,stroke:#C98B6B,color:#2F4134
+    class you,reply warm
+    class ai,py,log,cfg soft
+```
 
 ```
 good-habits/                 the skill: this is the folder you install
