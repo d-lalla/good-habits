@@ -113,6 +113,7 @@
   footer{border-top:1px solid var(--line);padding:32px 0 48px;color:var(--ink-2);font-size:15px}
   footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between}
   .alt{background:var(--soft)}
+  p code{background:var(--code);padding:1px 6px;border-radius:6px;font-size:.9em;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -127,6 +128,7 @@
       <a href="#why">Why</a>
       <a href="#week">A week</a>
       <a href="#catalog">Catalog</a>
+      <a href="#data">Your data</a>
       <a href="#install">Install</a>
       <a class="gh" href="https://github.com/d-lalla/good-habits">GitHub</a>
     </div>
@@ -236,22 +238,37 @@
   </div>
 </section>
 
-<section class="alt">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Works where you are</span>
-      <h2>Grows with your assistant</h2>
-      <p class="lead">The skill checks what your assistant can do and tells you in one line. Nothing is lost when moving up.</p>
+<section id="data" class="alt">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow">Your data</span>
+      <h2>Two small files, on your computer</h2>
+      <p class="lead">Everything lives in a folder you choose (by default <code>~/good-habits</code>). No cloud, no account, no health data. Open them with any text editor, delete them whenever you like.</p>
+      <p class="lead">If your assistant can't save files (for example claude.ai), nothing is stored and numbers stay approximate.</p>
     </div>
-    <div class="grid g3 levels">
-      <div class="card level" data-n="Level 0"><h3>Chat only</h3><p>Help choosing and configuring, check-ins in conversation. No exact counts.</p></div>
-      <div class="card level" data-n="Level 1"><h3>Files and Python</h3><p>Exact records and numbers in your folder, plus a calendar file for timed habits.</p></div>
-      <div class="card level" data-n="Level 2"><h3>Scheduled tasks</h3><p>One gentle daily check-in and one weekly summary, automatically.</p></div>
+    <div class="grid" style="gap:12px">
+      <div class="card"><h3 style="font-family:ui-monospace,Menlo,monospace;font-size:17px">habits.json</h3><p>Your habits and targets: "water, 1500 ml a day", "in bed by 23:00".</p></div>
+      <div class="card"><h3 style="font-family:ui-monospace,Menlo,monospace;font-size:17px">log.jsonl</h3><p>What you did, day by day. Journal habits record only <em>that</em> you wrote, never <em>what</em>.</p></div>
     </div>
   </div>
 </section>
 
-<section id="install" class="install">
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Reminders</span>
+      <h2>Gentle nudges, if your assistant can</h2>
+      <p class="lead">The skill checks what your assistant can do and tells you in one line. Nothing is lost when moving up.</p>
+    </div>
+    <div class="grid g3 levels">
+      <div class="card level" data-n="Chat only"><h3>You start the chat</h3><p>No reminders: write when you like. Help choosing habits and check-ins in conversation, no exact counts.</p></div>
+      <div class="card level" data-n="With files"><h3>Your calendar reminds you</h3><p>Exact records in your folder, plus an <code>.ics</code> calendar file for habits with a fixed time.</p></div>
+      <div class="card level" data-n="With scheduled tasks"><h3>A daily check-in</h3><p>One check-in a day that knows where you are ("1000 of 1500 ml today") and a summary on Sunday. Claude Desktop, Claude Code, ChatGPT.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="install" class="install alt">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Install</span>

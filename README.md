@@ -45,6 +45,14 @@ What a week looks like (example data):
 And on Sunday, if you like, a short weekly summary: what went well, what changed, and at most one
 suggestion.
 
+## At a glance
+
+| | |
+|---|---|
+| **Install** | Claude Code: `/plugin install good-habits --marketplace d-lalla/good-habits` · Codex, Cursor and 70+ agents: `npx skills add d-lalla/good-habits -g` · Claude apps: upload [good-habits.zip](https://github.com/d-lalla/good-habits/releases/latest/download/good-habits.zip). Then just talk: "I want to sleep better". [Details](#install) |
+| **Your data** | Two plain text files in a folder on your computer that you choose (default `~/good-habits`): `habits.json` (your habits and targets) and `log.jsonl` (what you did, day by day). No cloud, no account, no health data. If your assistant can't save files (e.g. claude.ai), nothing is stored and numbers stay approximate. |
+| **Reminders** | Depends on your assistant, and the skill tells you which case applies. **Chat only**: no reminders, you write when you like. **With files**: export an `.ics` calendar for timed habits and let your calendar remind you. **With scheduled tasks** (Claude Desktop, Claude Code, ChatGPT): one daily check-in that knows where you are ("1000 of 1500 ml today") and a summary on Sunday. In Claude Desktop the computer must be on with the app open. |
+
 ## Features
 
 - **21 habits** across sleep, nutrition, activity, mind, learning, productivity and relationships, plus
